@@ -13,6 +13,7 @@ import java.util.*;
 import org.jgap.*;
 import org.jgap.impl.*;
 import junit.framework.*;
+import org.jgap.util.PrivateAccessor;
 
 /**
  * Test persistent representation of the AbstractSupergene.
@@ -124,7 +125,7 @@ public class SupergenePersistentRepresentationTest
     InstantiableSupergeneForTesting gene = new InstantiableSupergeneForTesting(conf);
     /**@todo care that m_immutable is filled*/
     gene.reset();
-    Set[] m = (Set[]) privateAccessor.getField(gene, "m_immutable");
+    Set[] m = (Set[]) PrivateAccessor.getField(gene, "m_immutable");
     assertEquals(1, m.length);
   }
 

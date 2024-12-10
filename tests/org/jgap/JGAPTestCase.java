@@ -12,8 +12,8 @@ package org.jgap;
 import java.util.*;
 import java.io.*;
 import junit.framework.*;
-import junitx.util.*;
 import org.jgap.impl.*;
+import org.jgap.util.PrivateAccessor;
 
 /**
  * Abstract test case for all JGAP test cases providing a common infrastructure.

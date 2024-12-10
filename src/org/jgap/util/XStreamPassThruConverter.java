@@ -11,7 +11,6 @@ package org.jgap.util;
 
 import org.jgap.gp.impl.*;
 
-import junitx.util.*;
 import com.thoughtworks.xstream.*;
 import com.thoughtworks.xstream.annotations.*;
 import com.thoughtworks.xstream.converters.*;

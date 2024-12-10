@@ -14,7 +14,7 @@ import java.util.*;
 import org.jgap.*;
 
 import junit.framework.*;
-import junitx.util.*;
+import org.jgap.util.PrivateAccessor;
 
 /**
  * Tests the ThresholdSelector class.

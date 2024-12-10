@@ -11,6 +11,7 @@ package org.jgap;
 
 import org.jgap.event.*;
 import org.jgap.impl.*;
+import org.jgap.util.PrivateAccessor;
 
 /**
  * Ready-to-go Implementation of org.jgap.Configuration with all important
@@ -70,7 +71,7 @@ public class ConfigurationForTesting
   public synchronized void setRandomGenerator(RandomGenerator a_generatorToSet)
       throws InvalidConfigurationException {
     try {
-      junitx.util.PrivateAccessor.setField(this, "m_randomGenerator",
+      PrivateAccessor.setField(this, "m_randomGenerator",
                                            a_generatorToSet);
     }
     catch (NoSuchFieldException nex) {
