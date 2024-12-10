@@ -28,12 +28,12 @@ public class IslandGPExample {
 
   private int runs = 0;
 
-  /**@todo Island config. einbauen, so dass Island model automatisch ausgeführt
+  /**@todo Island config. einbauen, so dass Island model automatisch ausgefÃ¼hrt
    * wird
    */
   /**@todo impl. MergeEvent, e.g.: merge islands when one island stucks*/
-  /**@todo jeweils beste lösung geht öfters verloren! Beeinflusst ein Island das
-   * andere oder ist die Lösung in einem Island nicht beständig?*/
+  /**@todo jeweils beste lÃ¶sung geht Ã¶fters verloren! Beeinflusst ein Island das
+   * andere oder ist die LÃ¶sung in einem Island nicht bestÃ¤ndig?*/
 
   public IslandGPExample() {
   }

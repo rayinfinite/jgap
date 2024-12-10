@@ -12,7 +12,7 @@ package org.jgap.util;
 
     <p>
     <center>
-        <em>I<sub>j+1</sub></em> = (<em>I<sub>j</sub></em> × 16807) & 0x7FFFFFFF
+        <em>I<sub>j+1</sub></em> = (<em>I<sub>j</sub></em> Ã— 16807) & 0x7FFFFFFF
     </center>
 
     <p>

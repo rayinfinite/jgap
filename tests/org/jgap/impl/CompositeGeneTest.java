@@ -558,11 +558,11 @@ public class CompositeGeneTest
   public void testPersistentPresentation_0_2()
       throws Exception {
     CompositeGene gene1 = new CompositeGene(conf);
-    Gene gene0 = new StringGene(conf, 6, 31, "##*~?฿\\/%$ง!\".;:_-,");
-    gene0.setAllele("#*~?฿\\/%$ง!\".;:_-,");
+    Gene gene0 = new StringGene(conf, 6, 31, "##*~?ร\\/%$ยง!\".;:_-,");
+    gene0.setAllele("#*~?ร\\/%$ยง!\".;:_-,");
     gene1.addGene(gene0, false);
-    Gene gene2 = new StringGene(conf, 8, 33, "w*~?฿\\/%$ง!\".;:_-,lL");
-    gene2.setAllele("*~?฿/%$ง!\".;:_-,");
+    Gene gene2 = new StringGene(conf, 8, 33, "w*~?ร\\/%$ยง!\".;:_-,lL");
+    gene2.setAllele("*~?ร/%$ยง!\".;:_-,");
     gene1.addGene(gene2, false);
     String pres1 = gene1.getPersistentRepresentation();
     CompositeGene gene3 = new CompositeGene(conf);
@@ -598,8 +598,8 @@ public class CompositeGeneTest
     composite1.addGene(strgene, false);
     composite1.addGene(new StringGene(conf), false);
     composite1.addGene(new StringGene(conf, 2, 5), false);
-    String string = "<!-- many:various:chars &%$ง/()=<>C:CA/ -->";
-    strgene = new StringGene(conf, 6, 50, "CA! many:various:chars<>:&%$ง/()-=");
+    String string = "<!-- many:various:chars &%$ยง/()=<>C:CA/ -->";
+    strgene = new StringGene(conf, 6, 50, "CA! many:various:chars<>:&%$ยง/()-=");
     strgene.setAllele(string);
     // remember where, we will check the value later
     int stringPosition = composite1.size();

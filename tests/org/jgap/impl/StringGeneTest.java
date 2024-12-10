@@ -669,7 +669,7 @@ public class StringGeneTest
     StringGene gene1 = new StringGene(conf, 2, 10,
                                       "ABCDE"
                                       + Gene.PERSISTENT_FIELD_DELIMITER
-                                      + "+*~'´`");
+                                      + "+*~'Â´`");
     gene1.setAllele("BABE");
     String pres1 = gene1.getPersistentRepresentation();
     StringGene gene2 = new StringGene(conf);

@@ -292,7 +292,7 @@ public class GridKit {
       os.println(s);
     }
     os.close();
-    //Auf Fehler abfragen, da keine Exception über PrintWriter erzeugt wird!
+    //Auf Fehler abfragen, da keine Exception Ã¼ber PrintWriter erzeugt wird!
     if (os.checkError()) {
       throw new IOException("Fehler beim Schreiben der Textdatei " + dateiname);
     }

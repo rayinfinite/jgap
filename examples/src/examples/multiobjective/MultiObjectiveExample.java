@@ -16,8 +16,8 @@ import org.jgap.util.*;
 
 /**
  * Example for a multiobjective problem. Here, we have a function F with one
- * input parameter t and two output values F1 and F2, with F1 = t²
- * and F2 = (t - 2)². The input value is restricted from -10 to 10.
+ * input parameter t and two output values F1 and F2, with F1 = tÂ²
+ * and F2 = (t - 2)Â². The input value is restricted from -10 to 10.
  * We are looking for a t where F1 and F2 get minimal.
  * This example is from Goldberg (pp. 199), who adapted it from Schaffer (1984).
  *
@@ -116,8 +116,8 @@ public class MultiObjectiveExample {
     }
     // Print all Pareto-optimal solutions.
     // -----------------------------------
-    System.out.println("Formula F1(x) = x²");
-    System.out.println("Formula F2(x) = (x-2)²");
+    System.out.println("Formula F1(x) = xÂ²");
+    System.out.println("Formula F2(x) = (x-2)Â²");
     System.out.println("\nFound pareto-optimal solutions:");
     System.out.println("===============================\n");
     System.out.println("Input value x  F1(x)          F2(x)"

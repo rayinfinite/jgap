@@ -20,7 +20,7 @@ import org.jgap.gp.*;
  * of opponents against each other. The best of all wins.
  *
  * @author Javier Meseguer
- * @author Enrique D. Martí
+ * @author Enrique D. MartÃ­
  * @author Klaus Meffert
  * @since 3.2
  */
@@ -68,7 +68,7 @@ public class TournamentSelector
    * @return program that won the tournament
    *
    * @author Javier Meseguer
-   * @author Enrique D. Martí
+   * @author Enrique D. MartÃ­
    * @author Klaus Meffert
    * @since 3.2
    */

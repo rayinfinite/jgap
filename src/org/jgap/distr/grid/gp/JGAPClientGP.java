@@ -52,7 +52,7 @@ public class JGAPClientGP
   /**@todo info when work request has been taken*/
   /**@todo info when worker logs on --> evaluate logon files*/
   /**@todo top results in eigener datei speichern,
-   * komprimierung durch weglassen �berfl. infos, siehe xml --> injection after reload*/
+   * komprimierung durch weglassen überfl. infos, siehe xml --> injection after reload*/
   /**@todo copy good results to online folder*/
 
   /** String containing the CVS revision. Read out via reflection!*/
@@ -213,7 +213,7 @@ public class JGAPClientGP
     }
     // Setup work request.
     // -------------------
-    /**@todo ab 2. zyklus ist pop.gr�sse nur 1 !*/
+    /**@todo ab 2. zyklus ist pop.grï¿½sse nur 1 !*/
     JGAPRequestGP req = new JGAPRequestGP(m_gridconfig.getSessionName(),
                                           m_runID + "_" + m_requestIdx, 0,
                                           m_gridConfig);
