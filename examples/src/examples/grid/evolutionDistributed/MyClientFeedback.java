@@ -11,7 +11,8 @@ package examples.grid.evolutionDistributed;
 
 import org.jgap.*;
 import org.jgap.distr.grid.*;
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Listener for feedback sent to the client. This is a simple sample
@@ -27,7 +28,7 @@ public class MyClientFeedback
 
   private final static String className = MyClientFeedback.class.getName();
 
-  private static Logger log = Logger.getLogger(className);
+  private static Logger log = LoggerFactory.getLogger(className);
 
   public MyClientFeedback() {
   }

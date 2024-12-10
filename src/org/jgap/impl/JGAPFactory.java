@@ -13,7 +13,7 @@ import java.io.*;
 import java.util.*;
 import org.jgap.*;
 import org.jgap.util.*;
-import org.apache.commons.lang.builder.*;
+import org.apache.commons.lang3.builder.*;
 
 /**
  * Central factory for creating default objects to use, e.g. random generators.

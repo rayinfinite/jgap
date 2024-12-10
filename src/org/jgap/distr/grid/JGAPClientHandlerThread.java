@@ -40,8 +40,9 @@ public class JGAPClientHandlerThread
       // --------------
       File f = new File(super.gridServer.getVFSSessionPool().getPath(),n);
       long fsize = f.length();
-      if (log.isDebugEnabled())
-        log.debug("  File size: " + fsize);
+      //@FIXME: JCGRID is outdated
+      //if (log.isDebugEnabled())
+      //  log.debug("  File size: " + fsize);
       /**@todo consider 4GB limit*/
       byte[] data = new byte[ (int) fsize];
       FileInputStream fis = new FileInputStream(f);

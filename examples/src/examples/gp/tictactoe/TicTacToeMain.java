@@ -17,7 +17,7 @@ import org.jgap.gp.function.*;
 import org.jgap.gp.terminal.*;
 import org.jgap.util.*;
 import org.jgap.impl.*;
-import org.apache.log4j.Logger;
+import com.sun.org.slf4j.internal.Logger;
 
 /**
  * Example demonstrating Genetic Programming (GP) capabilities of JGAP.<p>
@@ -33,7 +33,7 @@ public class TicTacToeMain
   /** String containing the CVS revision. Read out via reflection!*/
   private final static String CVS_REVISION = "$Revision: 1.9 $";
 
-  public transient static Logger LOGGER = Logger.getLogger(TicTacToeMain.class);
+  public transient static Logger log = LoggerFactory.getLogger(TicTacToeMain.class);
 
   private static Variable vb;
 
@@ -320,7 +320,7 @@ public class TicTacToeMain
       config.setSingleNodeValidator(singleNodeValidator);
       final TicTacToeMain problem = new TicTacToeMain(config);
       config.getEventManager().addEventListener(GeneticEvent.
-          GPGENOTYPE_EVOLVED_EVENT, new MyGeneticEventListener(LOGGER));
+          GPGENOTYPE_EVOLVED_EVENT, new MyGeneticEventListener(log));
       // Setup for player 2.
       // -------------------
       GPConfiguration config2 = new GPConfiguration(config.getId() + "_2",
@@ -445,7 +445,7 @@ public class TicTacToeMain
           }
           else {
             if (nullfound == 100) {
-              LOGGER.error("---------- Consecutive calls: opponent is null!");
+              log.error("---------- Consecutive calls: opponent is null!");
             }
             opponent = m_other.getGPPopulation().getGPProgram(0);
           }
@@ -507,13 +507,13 @@ public class TicTacToeMain
             if (readCount > maxreads) {
               maxreads = readCount;
               if (maxreads > 1) {
-                LOGGER.info("**** Number of board reads reached: " +
+                log.info("**** Number of board reads reached: " +
                                    maxreads);
               }
             }
             error -= readCount * READ_VALUE;
             m_board.endTurn();
-            LOGGER.debug("**** First player made a correct move!");
+            log.debug("**** First player made a correct move!");
             moves++;
             error -= ONE_MOVE2;
             // Initialize local stores.
@@ -543,7 +543,7 @@ public class TicTacToeMain
             if (readCount > maxreads) {
               maxreads = readCount;
               if (maxreads > 1) {
-                LOGGER.info("**** Number of board reads reached: " +
+                log.info("**** Number of board reads reached: " +
                                    maxreads);
               }
             }
@@ -569,7 +569,7 @@ public class TicTacToeMain
           }
           m_board.endRound();
         }
-        LOGGER.fatal("******************* SUPERB: WE MADE IT");
+        log.fatal("******************* SUPERB: WE MADE IT");
       } catch (IllegalArgumentException iax) {
         // Already cared about by not reducing error rate.
         // -----------------------------------------------
@@ -580,7 +580,7 @@ public class TicTacToeMain
       }
       if (maxMoves < moves && moves > 0) {
         maxMoves = moves;
-        LOGGER.info("**** Number of valid moves reached: " + maxMoves);
+        log.info("**** Number of valid moves reached: " + maxMoves);
       }
       int depth13 = a_program.getChromosome(3).getSize(0);
       int depth1 = a_program.getChromosome(2).getSize(0) + depth13;
@@ -676,9 +676,9 @@ class BestGeneticEventListener
 };
 class MyGeneticEventListener
     implements GeneticEventListener {
-  private Logger LOGGER;
-  public MyGeneticEventListener(Logger LOGGER) {
-    this.LOGGER = LOGGER;
+  private Logger log;
+  public MyGeneticEventListener(Logger log) {
+    this.log = log;
   }
 
   public void geneticEventFired(GeneticEvent a_firedEvent) {
@@ -692,15 +692,15 @@ class MyGeneticEventListener
         allBestFitness = best.
             getFitnessValue();
       }
-      LOGGER.info("Evolving generation " + evno
+      log.info("Evolving generation " + evno
                          + ", all-time-best fitness: " +
                          allBestFitness
                          + ", memory free: "
                          + NumberKit.niceDecimalNumber(freeMem, 2) + " MB");
       IGPProgram best1 = genotype.getFittestProgram();
-      LOGGER.info("  Best in current generation: " +
+      log.info("  Best in current generation: " +
                          best1.getFitnessValue());
-      LOGGER.info("    " + best1.toStringNorm(0));
+      log.info("    " + best1.toStringNorm(0));
     }
     if (evno > 50000) {
       System.exit(0);

@@ -42,7 +42,7 @@ public class LMSFitnessFunction
     try {
       pg.grabPixels();
     } catch (InterruptedException ex) {
-      Logger.getLogger(LMSFitnessFunction.class.getName()).log(Level.SEVERE, null,
+      LoggerFactory.getLogger(LMSFitnessFunction.class.getName()).log(Level.SEVERE, null,
           ex);
     }
   }
@@ -59,7 +59,7 @@ public class LMSFitnessFunction
     try {
       pg.grabPixels();
     } catch (InterruptedException ex) {
-      Logger.getLogger(LMSFitnessFunction.class.getName()).log(Level.SEVERE, null,
+      LoggerFactory.getLogger(LMSFitnessFunction.class.getName()).log(Level.SEVERE, null,
           ex);
     }
     double sum = 0;

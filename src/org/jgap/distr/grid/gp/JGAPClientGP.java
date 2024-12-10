@@ -28,6 +28,8 @@ import org.jgap.gp.impl.*;
 import org.jgap.util.*;
 
 import com.thoughtworks.xstream.io.xml.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A client defines work for the grid and sends it to the JGAPServer.
@@ -50,7 +52,7 @@ public class JGAPClientGP
   /**@todo info when work request has been taken*/
   /**@todo info when worker logs on --> evaluate logon files*/
   /**@todo top results in eigener datei speichern,
-   * komprimierung durch weglassen überfl. infos, siehe xml --> injection after reload*/
+   * komprimierung durch weglassen ï¿½berfl. infos, siehe xml --> injection after reload*/
   /**@todo copy good results to online folder*/
 
   /** String containing the CVS revision. Read out via reflection!*/
@@ -97,8 +99,7 @@ public class JGAPClientGP
       "m_ind"},
   };
 
-  private static transient org.apache.log4j.Logger log
-      = org.apache.log4j.Logger.getLogger(JGAPClientGP.class);
+  private static final Logger log = LoggerFactory.getLogger(JGAPClientGP.class);
 
   protected GridNodeClientConfig m_gridconfig;
 
@@ -212,7 +213,7 @@ public class JGAPClientGP
     }
     // Setup work request.
     // -------------------
-    /**@todo ab 2. zyklus ist pop.grösse nur 1 !*/
+    /**@todo ab 2. zyklus ist pop.grï¿½sse nur 1 !*/
     JGAPRequestGP req = new JGAPRequestGP(m_gridconfig.getSessionName(),
                                           m_runID + "_" + m_requestIdx, 0,
                                           m_gridConfig);
@@ -571,7 +572,7 @@ public class JGAPClientGP
               log.info("before onError");
               onError(ex1);
             } catch (Exception ex) {
-              log.fatal("Unpredicted error", ex);
+              log.error("Unpredicted error", ex);
               m_gridConfig.getClientFeedback().error(
                   "Error while doing the work",
                   ex);
@@ -595,7 +596,7 @@ public class JGAPClientGP
     } catch (InterruptedException iex) {
       // Thread interrupted.
       // -------------------
-      log.fatal("Thread was interrupted", iex);
+      log.error("Thread was interrupted", iex);
       try {
         m_gcmed.disconnect();
       } catch (Exception ex) {

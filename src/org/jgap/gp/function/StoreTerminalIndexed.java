@@ -9,7 +9,7 @@
  */
 package org.jgap.gp.function;
 
-import org.apache.commons.lang.builder.*;
+import org.apache.commons.lang3.builder.*;
 import org.jgap.*;
 import org.jgap.gp.*;
 import org.jgap.gp.impl.*;

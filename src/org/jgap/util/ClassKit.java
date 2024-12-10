@@ -14,13 +14,14 @@ import java.net.*;
 import java.util.*;
 import java.util.jar.*;
 import java.util.zip.*;
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ClassKit {
   /** String containing the CVS revision. Read out via reflection!*/
   private final static String CVS_REVISION = "$Revision: 1.10 $";
 
-  private transient static Logger LOGGER = Logger.getLogger(ClassKit.class);
+  private static final Logger log = LoggerFactory.getLogger(ClassKit.class);
 
   public static void main(String[] args)
       throws Exception {
@@ -33,7 +34,7 @@ public class ClassKit {
     List result = new Vector();
     result = find("org.jgap.INaturalSelector");
     for (int i = 0; i < result.size(); i++) {
-      LOGGER.debug(result.get(i));
+      log.debug(result.get(i).toString());
     }
 //    URL url = ClassKit.class.getResource("/info/clearthought/layout/");
     URL url = ClassKit.class.getResource("/org/jgap/impl/");
@@ -63,7 +64,7 @@ public class ClassKit {
       return result;
     }
     catch (ClassNotFoundException ex) {
-      LOGGER.warn("Class " + a_tosubclassname + " not found!");
+      log.warn("Class " + a_tosubclassname + " not found!");
       return null;
     }
   }
@@ -143,7 +144,7 @@ public class ClassKit {
             }
           }
           catch (ClassNotFoundException cnfex) {
-            LOGGER.error(cnfex);
+            log.error(cnfex.getMessage(), cnfex);
           }
 //          catch (InstantiationException iex) {
 //            // We try to instanciate an interface or an object that does not
@@ -192,13 +193,13 @@ public class ClassKit {
             }
           }
           catch (ClassNotFoundException cnfex) {
-            LOGGER.error(cnfex);
+            log.error(cnfex.getMessage(), cnfex);
           }
         }
       }
     }
     catch (IOException ioex) {
-      LOGGER.error(ioex);
+      log.error(ioex.getMessage(), ioex);
     }
   }
 
@@ -251,7 +252,7 @@ public class ClassKit {
     Vector classes = new Vector();
     long startTime = System.currentTimeMillis();
     addClasses(classes, modulePath, "");
-    LOGGER.info("Found plugin classes in: "
+    log.info("Found plugin classes in: "
                        + (System.currentTimeMillis() - startTime)
                        + " milliseconds");
     // -------------------------------
@@ -261,7 +262,7 @@ public class ClassKit {
       try {
         String name = e.nextElement().toString();
         /**@todo check if class assignable from given type*/
-        LOGGER.info("Found plugin class: " + name);
+        log.info("Found plugin class: " + name);
       }
       catch (Throwable ex) {
         ; // do nothing?

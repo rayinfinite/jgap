@@ -14,7 +14,8 @@ import org.jgap.gp.*;
 import org.jgap.gp.impl.*;
 import org.jgap.distr.grid.*;
 import org.jgap.distr.grid.gp.*;
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Return the top 10 results to the client.
@@ -27,7 +28,7 @@ public class MyWorkerReturnStrategy
   /** String containing the CVS revision. Read out via reflection!*/
   private final static String CVS_REVISION = "$Revision: 1.7 $";
 
-  private static Logger log = Logger.getLogger(MyWorkerReturnStrategy.class);
+  private static Logger log = LoggerFactory.getLogger(MyWorkerReturnStrategy.class);
 
   /**
    * Determines the top 10 chromosomes and returns them.

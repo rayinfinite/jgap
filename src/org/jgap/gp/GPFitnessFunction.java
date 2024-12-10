@@ -9,7 +9,8 @@
  */
 package org.jgap.gp;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Fitness function for GP-Programs.
@@ -26,7 +27,7 @@ public abstract class GPFitnessFunction
 
   public final static double MAX_FITNESS_VALUE = Double.MAX_VALUE / 2;
 
-  private transient static Logger LOGGER = Logger.getLogger(GPFitnessFunction.class);
+  private static final Logger log = LoggerFactory.getLogger(GPFitnessFunction.class);
 
   /**
    * The fitness value computed during the previous run
@@ -63,7 +64,7 @@ public abstract class GPFitnessFunction
     try {
       fitnessValue = evaluate(a_program);
     } catch (IllegalStateException iex) {
-      LOGGER.debug(iex.getMessage());
+      log.debug(iex.getMessage());
       fitnessValue = NO_FITNESS_VALUE;
       return fitnessValue;
     }

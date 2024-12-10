@@ -11,7 +11,8 @@ package org.jgap.distr.grid;
 
 import java.io.*;
 import org.apache.commons.cli.*;
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.homedns.dade.jcgrid.cmd.*;
 import org.homedns.dade.jcgrid.server.*;
 
@@ -32,7 +33,7 @@ public class JGAPServer {
 
   private final static String className = JGAPServer.class.getName();
 
-  private static Logger log = Logger.getLogger(className);
+  private static Logger log = LoggerFactory.getLogger(className);
 
   private GridServer m_gs;
 

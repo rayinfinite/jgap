@@ -9,7 +9,8 @@
  */
 package examples.grid.mathProblemDistributed;
 
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.jgap.*;
 import org.jgap.distr.grid.*;
 import org.jgap.distr.grid.gp.*;
@@ -29,7 +30,7 @@ public class ClientEvolveStrategy
   /** String containing the CVS revision. Read out via reflection!*/
   public final static String CVS_REVISION = "$Revision: 1.14 $";
 
-  private static Logger log = Logger.getLogger(ClientEvolveStrategy.class);
+  private static Logger log = LoggerFactory.getLogger(ClientEvolveStrategy.class);
 
 //  private GPConfiguration m_config;
 

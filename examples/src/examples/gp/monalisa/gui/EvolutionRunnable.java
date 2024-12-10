@@ -11,7 +11,8 @@ package examples.gp.monalisa.gui;
 
 import java.awt.*;
 import java.awt.image.*;
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.jfree.chart.*;
 import org.jfree.data.xy.*;
 import org.jgap.*;
@@ -32,7 +33,7 @@ public class EvolutionRunnable
   /** String containing the CVS revision. Read out via reflection!*/
   private final static String CVS_REVISION = "$Revision: 1.4 $";
 
-  private transient static Logger LOGGER = Logger.getLogger(EvolutionRunnable.class);
+  private static final Logger log = LoggerFactory.getLogger(EvolutionRunnable.class);
 
   protected final GeneticDrawingView m_view;
 
@@ -75,7 +76,7 @@ public class EvolutionRunnable
       });
       eventManager.addEventListener(GeneticEvent.GPGENOTYPE_NEW_BEST_SOLUTION,
                                     new GeneticEventListener() {
-        private transient Logger LOGGER2 = Logger.getLogger(EvolutionRunnable.class);
+        private transient Logger log2 = LoggerFactory.getLogger(EvolutionRunnable.class);
         private DrawingGPProgramRunner gpProgramRunner = new
             DrawingGPProgramRunner(conf);
 
@@ -88,7 +89,7 @@ public class EvolutionRunnable
           GPGenotype genotype = (GPGenotype) a_firedEvent.getSource();
           IGPProgram best = genotype.getAllTimeBest();
           ApplicationData data = (ApplicationData)best.getApplicationData();
-          LOGGER2.info("Num Points / Polygons: " + data.numPoints + " / " +
+          log2.info("Num Points / Polygons: " + data.numPoints + " / " +
                       data.numPolygons);
 
           BufferedImage image = gpProgramRunner.run(best);
@@ -121,7 +122,7 @@ public class EvolutionRunnable
         gp.calcFitness();
         if (gp.getGPConfiguration().getGenerationNr() % 25 == 0) {
           String freeMB = SystemKit.niceMemory(SystemKit.getFreeMemoryMB());
-          LOGGER.info("Evolving gen. " +
+          log.info("Evolving gen. " +
                       (gp.getGPConfiguration().getGenerationNr()) +
                       ", mem free: " + freeMB + " MB");
         }

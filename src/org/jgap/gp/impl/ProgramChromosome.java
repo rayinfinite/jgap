@@ -12,7 +12,8 @@ package org.jgap.gp.impl;
 import java.lang.reflect.*;
 import java.util.*;
 
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.jgap.*;
 import org.jgap.gp.*;
 import org.jgap.gp.terminal.*;
@@ -37,7 +38,7 @@ public class ProgramChromosome
 
   final static String GENE_DELIMITER = "#";
 
-  private transient static Logger LOGGER = Logger.getLogger(ProgramChromosome.class);
+  private static final Logger log = LoggerFactory.getLogger(ProgramChromosome.class);
 
   /**
    * The list of allowed functions/terminals.
@@ -644,7 +645,7 @@ public class ProgramChromosome
             } catch (InvalidConfigurationException iex) {
               // Ignore but log.
               // ---------------
-              LOGGER.warn("Ignored problem", iex);
+              log.warn("Ignored problem", iex);
             }
           }
         }

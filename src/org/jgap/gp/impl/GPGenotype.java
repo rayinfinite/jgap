@@ -12,7 +12,8 @@ package org.jgap.gp.impl;
 import java.io.*;
 import java.util.*;
 
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.jgap.*;
 import org.jgap.distr.grid.gp.*;
 import org.jgap.event.*;
@@ -31,7 +32,7 @@ public class GPGenotype
   /** String containing the CVS revision. Read out via reflection!*/
   private final static String CVS_REVISION = "$Revision: 1.60 $";
 
-  private transient static Logger LOGGER = Logger.getLogger(GPGenotype.class);
+  private static final Logger log = LoggerFactory.getLogger(GPGenotype.class);
 
   /**
    * The array of GPProgram's that make-up this GPGenotype's population
@@ -417,8 +418,8 @@ public class GPGenotype
     // ----------------
     System.gc();
     if (a_verboseOutput) {
-      LOGGER.info("Creating initial population");
-      LOGGER.info("Mem free: "
+      log.info("Creating initial population");
+      log.info("Mem free: "
                   + SystemKit.niceMemory(SystemKit.getTotalMemoryMB()) + " MB");
     }
     // Create initial population.
@@ -434,7 +435,7 @@ public class GPGenotype
     // ----------------
     System.gc();
     if (a_verboseOutput) {
-      LOGGER.info("Mem free after creating population: "
+      log.info("Mem free after creating population: "
                   + SystemKit.niceMemory(SystemKit.getTotalMemoryMB()) + " MB");
     }
     checkErroneousPop(pop, " after creating population/2");
@@ -535,7 +536,7 @@ public class GPGenotype
       if (m_verbose) {
         if (i % 25 == 0) {
           String freeMB = SystemKit.niceMemory(SystemKit.getFreeMemoryMB());
-          LOGGER.info("Evolving generation "
+          log.info("Evolving generation "
                       + (i + offset)
                       + ", memory free: "
                       + freeMB
@@ -603,7 +604,7 @@ public class GPGenotype
           if (cloner == null) {
             m_allTimeBest = best;
             if (!m_cloneWarningGPProgramShown) {
-              LOGGER.info("Warning: cannot clone instance of "
+              log.info("Warning: cannot clone instance of "
                           + best.getClass());
               m_cloneWarningGPProgramShown = true;
             }
@@ -658,17 +659,17 @@ public class GPGenotype
    */
   public void outputSolution(IGPProgram a_best) {
     if (a_best == null) {
-      LOGGER.debug("No best solution (null)");
+      log.debug("No best solution (null)");
       return;
     }
     double bestValue = a_best.getFitnessValue();
     if (Double.isInfinite(bestValue)) {
-      LOGGER.debug("No best solution (infinite)");
+      log.debug("No best solution (infinite)");
       return;
     }
-    LOGGER.info("Best solution fitness: " +
+    log.info("Best solution fitness: " +
                 NumberKit.niceDecimalNumber(bestValue, 2));
-    LOGGER.info("Best solution: " + a_best.toStringNorm(0));
+    log.info("Best solution: " + a_best.toStringNorm(0));
     String depths = "";
     int size = a_best.size();
     for (int i = 0; i < size; i++) {
@@ -678,10 +679,10 @@ public class GPGenotype
       depths += a_best.getChromosome(i).getDepth(0);
     }
     if (size == 1) {
-      LOGGER.info("Depth of chrom: " + depths);
+      log.info("Depth of chrom: " + depths);
     }
     else {
-      LOGGER.info("Depths of chroms: " + depths);
+      log.info("Depths of chroms: " + depths);
     }
   }
 
@@ -777,7 +778,7 @@ public class GPGenotype
               tries++;
               if ( (maxTries > 0 && tries >= maxTries) || tries > 40) {
                 if (!getGPConfiguration().isMaxNodeWarningPrinted()) {
-                  LOGGER.error(
+                  log.error(
                       "Warning: Maximum number of nodes allowed may be too small");
                   getGPConfiguration().flagMaxNodeWarningPrinted();
                 }
@@ -840,7 +841,7 @@ public class GPGenotype
             checkErroneousProg(program,
                                " when adding a program, evolution (index " + i +
                                ")", true);
-            LOGGER.debug("Added new GP program (depth parameter: "
+            log.debug("Added new GP program (depth parameter: "
                          + depth
                          + ", "
                          + tries
@@ -854,7 +855,7 @@ public class GPGenotype
              * Or even better: Make the validator return a defect rate!
              */
             if ( (maxTries > 0 && tries > maxTries) || tries > 40) {
-              LOGGER.debug(
+              log.debug(
                   "Creating random GP program failed (depth "
                   + depth
                   + ", "
@@ -890,7 +891,7 @@ public class GPGenotype
         } while (true)
         ;
       }
-      LOGGER.debug("Did "
+      log.debug("Did "
                    + crossover + " x-overs, "
                    + reproduction + " reproductions, "
                    + creation + " creations");
@@ -1138,7 +1139,7 @@ public class GPGenotype
             validProgram, null, null);
         return program;
       } catch (Exception ex) {
-        LOGGER.error(ex.getMessage(), ex);
+        log.error(ex.getMessage(), ex);
         return null;
       }
     }
@@ -1316,7 +1317,7 @@ public class GPGenotype
       a_prog.getFitnessValue();
     } catch (Throwable ex) {
       String msg = "Invalid program detected" + s + "!";
-      LOGGER.fatal(msg);
+      log.error(msg);
       throw new RuntimeException(msg, ex);
     }
   }
@@ -1485,15 +1486,15 @@ public class GPGenotype
    */
   protected static void outputWarning(Map<String, CommandGene> invalidNodes) {
     if (invalidNodes != null && invalidNodes.size() > 0) {
-      LOGGER.warn("Your configuration contains commands that are not used:");
+      log.warn("Your configuration contains commands that are not used:");
       Iterator it = invalidNodes.values().iterator();
       while (it.hasNext()) {
         CommandGene node = (CommandGene) it.next();
-        LOGGER.warn(" " + node.getClass().getName());
+        log.warn(" " + node.getClass().getName());
       }
     }
     else {
-      LOGGER.info("Your configuration does not contain unused commands,"
+      log.info("Your configuration does not contain unused commands,"
                   + " this is good");
     }
   }
@@ -1510,12 +1511,12 @@ public class GPGenotype
    */
   protected static void outputDepthInfo(Map<CommandGene, int[]> a_invalidDepths) {
     if (a_invalidDepths != null && a_invalidDepths.size() > 0) {
-      LOGGER.info("Your configuration contains commands that are not possible"
+      log.info("Your configuration contains commands that are not possible"
                   + "for certain depths: ");
       Iterator it = a_invalidDepths.keySet().iterator();
       while (it.hasNext()) {
         CommandGene node = (CommandGene) it.next();
-        LOGGER.info(" " + node.getClass().getName());
+        log.info(" " + node.getClass().getName());
         int[] depths = (int[]) a_invalidDepths.get(node);
         String s = "";
         for (int i = 0; i < depths.length; i++) {
@@ -1524,7 +1525,7 @@ public class GPGenotype
           }
           s += depths[i];
         }
-        LOGGER.info("   Impossible depths: " + s);
+        log.info("   Impossible depths: " + s);
       }
     }
   }

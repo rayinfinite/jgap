@@ -12,7 +12,7 @@ package org.jgap.gp.impl;
 import java.io.*;
 import java.util.*;
 
-import org.apache.commons.lang.builder.*;
+import org.apache.commons.lang3.builder.*;
 import org.jgap.*;
 import org.jgap.distr.*;
 import org.jgap.event.*;

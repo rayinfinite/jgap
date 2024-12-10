@@ -11,7 +11,7 @@ package org.jgap.gp;
 
 import java.io.*;
 
-import org.apache.commons.lang.builder.*;
+import org.apache.commons.lang3.builder.*;
 import org.jgap.*;
 import org.jgap.gp.impl.*;
 

@@ -12,7 +12,8 @@ package examples.grid.mathProblemDistributed;
 import java.util.*;
 import org.jgap.gp.*;
 import org.jgap.gp.terminal.*;
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Fitness function for our example.
@@ -25,7 +26,7 @@ public class SampleFitnessFunction
   /** String containing the CVS revision. Read out via reflection!*/
   private final static String CVS_REVISION = "$Revision: 1.8 $";
 
-  private static Logger log = Logger.getLogger(SampleFitnessFunction.class);
+  private static Logger log = LoggerFactory.getLogger(SampleFitnessFunction.class);
 
   static Variable vx;
 

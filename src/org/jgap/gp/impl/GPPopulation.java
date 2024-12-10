@@ -12,7 +12,8 @@ package org.jgap.gp.impl;
 import java.io.*;
 import java.util.*;
 
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.jgap.*;
 import org.jgap.gp.*;
 import org.jgap.util.*;
@@ -36,7 +37,7 @@ public class GPPopulation
 
   public final static double DELTA = 0.0000001d;
 
-  private transient Logger LOGGER = Logger.getLogger(GPPopulation.class);
+  private transient Logger log = LoggerFactory.getLogger(GPPopulation.class);
 
   private transient int warningPrototypeReused = 0;
 
@@ -327,7 +328,7 @@ public class GPPopulation
             // validator is used which is quite restrictive.
             // ----------------------------------------------------------
             getGPConfiguration().setPrototypeProgram(program);
-            LOGGER.info("Prototype program set");
+            log.info("Prototype program set");
           }
           else if (genNr % 5 == 0 && genNr > 0 && i == genI) {
               /**@todo 5: make configurable*/
@@ -363,7 +364,7 @@ public class GPPopulation
                   if (warningPrototypeReused > 0) {
                     // Only output once.
                     // -----------------
-                    LOGGER.warn("Prototype program reused because random"
+                    log.warn("Prototype program reused because random"
                                 + " program did not satisfy constraints");
                     warningPrototypeReused++;
                   }
@@ -375,7 +376,7 @@ public class GPPopulation
                 }
               }
               else {
-                LOGGER.warn("Warning: no clone handler found for"
+                log.warn("Warning: no clone handler found for"
                             + " prototype program type "
                             + prototype);
               }

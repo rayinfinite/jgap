@@ -12,7 +12,8 @@ package examples.gp.symbolicRegression;
 import java.io.*;
 import java.util.*;
 
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.jgap.*;
 import org.jgap.gp.*;
 import org.jgap.gp.function.*;
@@ -57,7 +58,7 @@ import org.jgap.util.*;
  */
 public class SymbolicRegression
     extends GPProblem {
-  private transient static Logger LOGGER = Logger.getLogger(SymbolicRegression.class);
+  private static final Logger log = LoggerFactory.getLogger(SymbolicRegression.class);
 
   /*
    * public variables which may be changed by configuration file
@@ -874,7 +875,7 @@ public class SymbolicRegression
     // Log to stdout instead of file
     // -----------------------------
 //        org.apache.log4j.PropertyConfigurator.configure("log4j.properties");
-    LOGGER.addAppender(new ConsoleAppender(new SimpleLayout(), "System.out"));
+    log.addAppender(new ConsoleAppender(new SimpleLayout(), "System.out"));
     //
     // Read a configuration file, or not...
     //

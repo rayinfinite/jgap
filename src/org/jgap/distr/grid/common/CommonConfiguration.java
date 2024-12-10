@@ -12,7 +12,8 @@ package org.jgap.distr.grid.common;
 
 import java.io.*;
 import org.jgap.util.*;
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -25,7 +26,7 @@ public abstract class CommonConfiguration {
   /** String containing the CVS revision. Read out via reflection!*/
   private final static String CVS_REVISION = "$Revision: 1.2 $";
 
-  private transient Logger LOGGER = Logger.getLogger(CommonConfiguration.class);
+  private transient Logger log = LoggerFactory.getLogger(CommonConfiguration.class);
 
   /**
    * Working directory
@@ -54,9 +55,9 @@ public abstract class CommonConfiguration {
   public void setWorkDir(String a_workDir) {
     try {
       m_workDir = FileKit.addSubDir(FileKit.getCurrentDir(), a_workDir, true);
-      LOGGER.info("Using work directory " + m_workDir);
+      log.info("Using work directory " + m_workDir);
       if (!FileKit.directoryExists(m_workDir)) {
-        LOGGER.info("  Directory does not exist yet. Wil create it.");
+        log.info("  Directory does not exist yet. Wil create it.");
         FileKit.createDirectory(m_workDir);
 
       }
@@ -73,9 +74,9 @@ public abstract class CommonConfiguration {
   public void setLibDir(String a_libDir) {
     try {
       m_libDir = FileKit.addSubDir(FileKit.getCurrentDir(), a_libDir, true);
-      LOGGER.info("Using lib directory " + m_libDir);
+      log.info("Using lib directory " + m_libDir);
       if (!FileKit.directoryExists(m_libDir)) {
-        LOGGER.info("  Directory does not exist yet. Wil create it.");
+        log.info("  Directory does not exist yet. Wil create it.");
         FileKit.createDirectory(m_libDir);
 
       }

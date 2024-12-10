@@ -14,7 +14,8 @@ import org.jgap.gp.*;
 import org.jgap.gp.impl.*;
 import org.jgap.distr.grid.gp.*;
 import org.jgap.distr.grid.*;
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Listener for feedback sent to the GP client. This is a simple sample
@@ -28,7 +29,7 @@ public class MyClientFeedback
   /** String containing the CVS revision. Read out via reflection!*/
   private final static String CVS_REVISION = "$Revision: 1.7 $";
 
-  private static Logger log = Logger.getLogger(MyClientFeedback.class);
+  private static Logger log = LoggerFactory.getLogger(MyClientFeedback.class);
 
   public MyClientFeedback() {
   }

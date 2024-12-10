@@ -11,7 +11,7 @@ package org.jgap.distr;
 
 import java.io.*;
 import java.util.*;
-import org.apache.commons.lang.builder.*;
+import org.apache.commons.lang3.builder.*;
 
 /**
  * Represents a memory cell used within {@link org.jgap.distr.Culture}, a

@@ -11,7 +11,7 @@ package org.jgap.distr;
 
 import java.io.*;
 import java.util.*;
-import org.apache.commons.lang.builder.*;
+import org.apache.commons.lang3.builder.*;
 
 /**
  * Culture is a memory not being bound to a generation, but possibly persistent

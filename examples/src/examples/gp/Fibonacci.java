@@ -9,7 +9,8 @@
  */
 package examples.gp;
 
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.jgap.*;
 import org.jgap.event.*;
 import org.jgap.gp.*;
@@ -37,7 +38,7 @@ public class Fibonacci
   /** String containing the CVS revision. Read out via reflection!*/
   private final static String CVS_REVISION = "$Revision: 1.34 $";
 
-  transient static final Logger LOGGER = Logger.getLogger(Fibonacci.class);
+  transient static final Logger log = LoggerFactory.getLogger(Fibonacci.class);
 
   static Variable vx;
 
@@ -234,7 +235,7 @@ public class Fibonacci
           }
           if (evno % 50 == 0) {
             double allBestFitness = genotype.getAllTimeBest().getFitnessValue();
-            LOGGER.info("Evolving generation " + evno
+            log.info("Evolving generation " + evno
                         + ", all-time-best fitness: " + allBestFitness
                         + ", memory free: "
                         + NumberKit.niceDecimalNumber(freeMem, 2) + " MB");

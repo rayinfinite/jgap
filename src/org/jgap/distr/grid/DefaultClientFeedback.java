@@ -11,7 +11,8 @@ package org.jgap.distr.grid;
 
 import org.jgap.*;
 import org.jgap.distr.grid.*;
-import org.apache.log4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Empty implementation.
@@ -26,7 +27,7 @@ public class DefaultClientFeedback
 
   private final static String className = DefaultClientFeedback.class.getName();
 
-  private static Logger log = Logger.getLogger(className);
+  private static Logger log = LoggerFactory.getLogger(className.getClass());
 
   public DefaultClientFeedback() {
   }
